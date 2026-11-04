@@ -12,6 +12,7 @@
 <meta property="og:url" content="https://clydearaujo.com/">
 <meta property="og:image" content="https://clydearaujo.com/assets/headshot.jpg">
 <meta name="theme-color" content="#0E0B1A">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/assets/fonts/archivo-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/site.css">
 <script type="application/ld+json">
@@ -48,7 +49,7 @@
 <header class="site-header">
 <div class="wrap">
 <a class="brand" href="/">Clyde Araujo</a>
-<nav class="nav" aria-label="Main">
+<nav class="nav" aria-label="Main" data-spy>
 <a href="#work">Work</a>
 <a href="#verdict">The Data Verdict</a>
 <a href="#builds">Builds</a>
@@ -74,10 +75,10 @@
 
 <section class="wrap" aria-label="Proof in numbers">
 <div class="proof">
-<div><span class="num accent">2M → 5M</span><span class="label">Consumers in two years, lead market</span></div>
-<div><span class="num">€14M</span><span class="label">Programme secured and led</span></div>
-<div><span class="num">+25%</span><span class="label">Incremental net sales, lead market</span></div>
-<div><span class="num">60–70%</span><span class="label">Faster asset production with GenAI</span></div>
+<div><span class="num accent">2M → <span data-count="5" data-from="2">5</span>M</span><span class="label">Consumers in two years, lead market</span></div>
+<div><span class="num">€<span data-count="14">14</span>M</span><span class="label">Programme secured and led</span></div>
+<div><span class="num">+<span data-count="25">25</span>%</span><span class="label">Incremental net sales, lead market</span></div>
+<div><span class="num">60–<span data-count="70" data-from="60">70</span>%</span><span class="label">Faster asset production with GenAI</span></div>
 </div>
 </section>
 
@@ -90,15 +91,15 @@
 <div>
 <a class="case" href="/work/crm-transformation/">
 <span class="case-col"><span class="case-meta">Henkel · Head of Global eCRM</span><span class="case-title">From audit to €14M: rebuilding a global CRM programme</span></span>
-<span class="case-col"><span class="body">An audit in the Chief Digital Office, a business case that secured €12M for a new tech stack plus €2M for programme marketing, and a move from Salesforce Marketing Cloud to Adobe.</span><span class="case-stat">12 markets · lead market: 2M → 5M consumers, +25% incremental net sales</span><span class="case-more">Read the case study →</span></span>
+<span class="case-col"><span class="body">An audit in the Chief Digital Office, a business case that secured €12M for a new tech stack plus €2M for programme marketing, and a move from Salesforce Marketing Cloud to Adobe.</span><span class="case-stat">12 markets · lead market: 2M → 5M consumers, +25% incremental net sales</span><span class="case-more">Read the case study <span class="arr" aria-hidden="true">→</span></span></span>
 </a>
 <a class="case" href="/work/salonlab/">
 <span class="case-col"><span class="case-meta">Henkel · Schwarzkopf Professional SalonLab · B2B2C IoT</span><span class="case-title">Connecting the salon chair to the shopping basket</span></span>
-<span class="case-col"><span class="body">After a fast acquisition integration, I reset the platform's foundations, rebuilt one data model linking salon devices, product data and consumer profiles to e-commerce, and ran the CRM side as it grew.</span><span class="case-stat">+15% first-time conversion · +20% repeat purchase</span><span class="case-more">Read the case study →</span></span>
+<span class="case-col"><span class="body">After a fast acquisition integration, I reset the platform's foundations, rebuilt one data model linking salon devices, product data and consumer profiles to e-commerce, and ran the CRM side as it grew.</span><span class="case-stat">+15% first-time conversion · +20% repeat purchase</span><span class="case-more">Read the case study <span class="arr" aria-hidden="true">→</span></span></span>
 </a>
 <a class="case" href="/work/genai-pilot/">
 <span class="case-col"><span class="case-meta">Henkel · GenAI pilot</span><span class="case-title">GenAI content at speed, with governance built in</span></span>
-<span class="case-col"><span class="body">I set up the pilot and its governance: modular asset generation in a flexible template, plus segment scoring, used by brand teams in one pilot market.</span><span class="case-stat">60–70% faster production · 14 assets · 2 segments</span><span class="case-more">Read the case study →</span></span>
+<span class="case-col"><span class="body">I set up the pilot and its governance: modular asset generation in a flexible template, plus segment scoring, used by brand teams in one pilot market.</span><span class="case-stat">60–70% faster production · 14 assets · 2 segments</span><span class="case-more">Read the case study <span class="arr" aria-hidden="true">→</span></span></span>
 </a>
 </div>
 </div>
@@ -254,11 +255,6 @@
 <nav aria-label="Legal"><a href="/impressum/">Impressum</a><a href="/datenschutz/">Datenschutz</a></nav>
 </div>
 </footer>
-<script>
-(function(){if(!('IntersectionObserver' in window))return;if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-var items=document.querySelectorAll('.tl-item');document.documentElement.classList.add('tl-anim');
-var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.2});
-items.forEach(function(i){io.observe(i);});})();
-</script>
+<script src="/assets/motion.js" defer></script>
 </body>
 </html>
