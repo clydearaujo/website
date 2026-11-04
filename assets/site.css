@@ -174,3 +174,7 @@ img{max-width:100%;display:block}
 .nav a.active{color:var(--text)}
 .progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:20;background:transparent}
 .progress div{height:100%;width:0;background:var(--purple)}
+@media (min-width:900px){
+  .site-header{position:sticky;top:0;z-index:15;background:rgba(14,11,26,.92);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+  section[id]{scroll-margin-top:96px}
+}
