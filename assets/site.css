@@ -1,9 +1,8 @@
-@font-face{font-family:Archivo;font-weight:600;font-display:swap;src:url(fonts/archivo-latin-600-normal.woff2) format("woff2")}
-@font-face{font-family:Archivo;font-weight:700;font-display:swap;src:url(fonts/archivo-latin-700-normal.woff2) format("woff2")}
-@font-face{font-family:Archivo;font-weight:800;font-display:swap;src:url(fonts/archivo-latin-800-normal.woff2) format("woff2")}
-@font-face{font-family:Inter;font-weight:400;font-display:swap;src:url(fonts/inter-latin-400-normal.woff2) format("woff2")}
-@font-face{font-family:Inter;font-weight:500;font-display:swap;src:url(fonts/inter-latin-500-normal.woff2) format("woff2")}
-@font-face{font-family:Inter;font-weight:600;font-display:swap;src:url(fonts/inter-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:"Space Grotesk";font-weight:600;font-display:swap;src:url(fonts/space-grotesk-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:"Space Grotesk";font-weight:700;font-display:swap;src:url(fonts/space-grotesk-latin-700-normal.woff2) format("woff2")}
+@font-face{font-family:"Noto Sans";font-weight:400;font-display:swap;src:url(fonts/noto-sans-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Noto Sans";font-weight:500;font-display:swap;src:url(fonts/noto-sans-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:"Noto Sans";font-weight:600;font-display:swap;src:url(fonts/noto-sans-latin-600-normal.woff2) format("woff2")}
 @font-face{font-family:"JetBrains Mono";font-weight:400;font-display:swap;src:url(fonts/jetbrains-mono-latin-400-normal.woff2) format("woff2")}
 @font-face{font-family:"JetBrains Mono";font-weight:500;font-display:swap;src:url(fonts/jetbrains-mono-latin-500-normal.woff2) format("woff2")}
 
@@ -13,7 +12,7 @@
   --lavender:#B49BFF;--link:#C4B2FF;--link-hover:#E2D8FF;
   --purple:#5B2EE5;--purple-hover:#4A22C9;--outline:#6B5FA0;
   --lime:#D4FF3A;--warm:#F0B27A;--grey-chip:#8C84A6;
-  --display:Archivo,system-ui,sans-serif;--sans:Inter,system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace;
+  --display:"Space Grotesk",system-ui,sans-serif;--sans:"Noto Sans",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace;
 }
 *{box-sizing:border-box}
 html{color-scheme:dark}
@@ -50,8 +49,8 @@ img{max-width:100%;display:block}
 /* Type */
 .eyebrow{margin:0;font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--lavender)}
 .eyebrow.muted{color:var(--muted)}
-.h1{margin:0;max-width:1080px;font-family:var(--display);font-weight:800;font-size:clamp(40px,6vw,84px);line-height:1;letter-spacing:-.045em;color:#fff}
-.h2{margin:0;font-family:var(--display);font-weight:800;font-size:clamp(32px,4.5vw,56px);line-height:1.04;letter-spacing:-.035em}
+.h1{margin:0;max-width:1080px;font-family:var(--display);font-weight:700;font-size:clamp(40px,6vw,84px);line-height:1.12;letter-spacing:-.02em;color:#fff}
+.h2{margin:0;font-family:var(--display);font-weight:700;font-size:clamp(32px,4.5vw,56px);line-height:1.04;letter-spacing:-.025em}
 .h3{margin:0;font-family:var(--display);font-weight:700;font-size:22px;line-height:1.25}
 .lead{margin:0;max-width:640px;font-size:21px;line-height:1.55;color:var(--body)}
 .body{color:var(--body)}
@@ -63,7 +62,7 @@ img{max-width:100%;display:block}
 .actions{display:flex;flex-wrap:wrap;gap:14px}
 .proof{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px 24px;border-top:1px solid var(--line-strong);padding-top:28px;margin-bottom:96px}
 .proof div{display:flex;flex-direction:column;gap:6px}
-.proof .num{font-family:var(--display);font-weight:800;font-size:44px;letter-spacing:-.03em;line-height:1.1}
+.proof .num{font-family:var(--display);font-weight:700;font-size:44px;letter-spacing:-.02em;line-height:1.1}
 .proof .num.accent{color:var(--lavender)}
 .proof .label{font-size:15px;color:var(--muted)}
 
@@ -115,7 +114,7 @@ img{max-width:100%;display:block}
 
 /* Contact */
 .contact .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:32px;padding-top:96px;padding-bottom:96px}
-.contact-title{margin:0;font-family:var(--display);font-weight:800;font-size:clamp(30px,4vw,48px);letter-spacing:-.035em;line-height:1.08}
+.contact-title{margin:0;font-family:var(--display);font-weight:700;font-size:clamp(30px,4vw,48px);letter-spacing:-.025em;line-height:1.08}
 .contact-sub{margin:12px 0 0;font-family:var(--mono);font-size:14px;letter-spacing:.04em;color:var(--muted)}
 
 /* Footer */
@@ -126,7 +125,7 @@ img{max-width:100%;display:block}
 /* Article pages (case studies, legal) */
 .article{max-width:760px;margin:0 auto;padding:88px 24px 112px}
 .article .back{display:inline-flex;align-items:center;min-height:44px;margin-bottom:32px;color:var(--link);text-decoration:none;font-weight:600}
-.article h1{margin:16px 0 20px;font-family:var(--display);font-weight:800;font-size:clamp(36px,5vw,60px);line-height:1.04;letter-spacing:-.035em}
+.article h1{margin:16px 0 20px;font-family:var(--display);font-weight:700;font-size:clamp(36px,5vw,60px);line-height:1.04;letter-spacing:-.025em}
 .article h2{margin:56px 0 14px;font-family:var(--display);font-weight:700;font-size:26px;letter-spacing:-.02em}
 .article h3{margin:28px 0 8px;font-family:var(--display);font-weight:700;font-size:19px}
 .article p,.article li{color:var(--body);font-size:18px}
@@ -134,7 +133,7 @@ img{max-width:100%;display:block}
 .article li{margin:6px 0}
 .results{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px;margin:28px 0;padding:28px 0;border-top:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong)}
 .results div{display:flex;flex-direction:column;gap:4px}
-.results .num{font-family:var(--display);font-weight:800;font-size:40px;letter-spacing:-.03em;color:var(--lavender);line-height:1.1}
+.results .num{font-family:var(--display);font-weight:700;font-size:40px;letter-spacing:-.02em;color:var(--lavender);line-height:1.1}
 .results .label{font-size:15px;color:var(--muted)}
 .legal p,.legal li{font-size:16px}
 .legal address{font-style:normal;color:var(--body);font-size:16px;line-height:1.7}
@@ -190,3 +189,7 @@ img{max-width:100%;display:block}
 .verdict-link{font-size:14px;margin-top:4px}
 .signals-archive{margin:28px 0 0;font-size:15px}
 .signals-week{margin-top:40px}
+#hero-title{overflow-x:clip}
+.mark{background:linear-gradient(var(--lime),var(--lime)) 0 75%/100% 80% no-repeat}
+.motion .mark{background-size:0% 80%;background-position:0 75%}
+.motion .mark.on{background-size:100% 80%}
