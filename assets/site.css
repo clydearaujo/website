@@ -195,3 +195,5 @@ img{max-width:100%;display:block}
 .motion .mark.on{background-size:100% 80%}
 .nav a[aria-current="page"]{color:var(--text);box-shadow:inset 0 -2px 0 var(--lime)}
 .nocaps{text-transform:none}
+[data-count].counting{position:relative;color:transparent}
+[data-count].counting::after{content:attr(data-show);position:absolute;right:0;top:0;color:var(--c)}

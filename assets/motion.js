@@ -47,17 +47,24 @@
   var mark = document.querySelector('.mark');
   if (mark) setTimeout(function () { mark.classList.add('on'); }, 350);
 
-  // 1b. Hero word roll: product, operational, marketing, privacy, compliance, customer
+  // 1b. Hero word roll: the page text holds only "customer"; the other words are
+  // added for the animation (aria-hidden) and removed again when it ends.
   var roll = document.querySelector('.roll');
   if (roll) {
+    var last = roll.lastElementChild;
+    (roll.getAttribute('data-words') || '').split(' ').filter(Boolean).forEach(function (w) {
+      var sp = document.createElement('span'); sp.textContent = w; sp.setAttribute('aria-hidden', 'true'); roll.insertBefore(sp, last);
+    });
     var words = [].slice.call(roll.children), k = 0;
     var setW = function (i) { roll.style.width = words[i].offsetWidth + 'px'; };
+    var done = function () { words.forEach(function (w) { if (w !== last) roll.removeChild(w); }); roll.style.width = ''; };
     words[0].classList.add('on'); setW(0);
-    var nextWord = function () { words[k].classList.remove('on'); k++; words[k].classList.add('on'); setW(k); if (k < words.length - 1) setTimeout(nextWord, 240); };
+    var nextWord = function () { words[k].classList.remove('on'); k++; words[k].classList.add('on'); setW(k); if (k < words.length - 1) setTimeout(nextWord, 240); else setTimeout(done, 400); };
     setTimeout(nextWord, 900);
   }
 
   // 2. Numbers count up once, 3. verdict reveal, timeline fade-in
+  // The real figure always stays in the page text; the count-up is drawn on top via ::after (data-show).
   var countUp = function (el) {
     var to = parseFloat(el.getAttribute('data-count'));
     var from = parseFloat(el.getAttribute('data-from') || '0');
@@ -67,14 +74,17 @@
     var step = function (t) {
       if (!t0) t0 = t;
       var p = Math.min((t - t0) / d, 1), e = 1 - Math.pow(1 - p, 3);
-      el.textContent = (from + (to - from) * e).toFixed(dec);
-      if (p < 1) requestAnimationFrame(step); else el.textContent = el.getAttribute('data-count');
+      el.setAttribute('data-show', (from + (to - from) * e).toFixed(dec));
+      if (p < 1) requestAnimationFrame(step); else { el.classList.remove('counting'); el.removeAttribute('data-show'); }
     };
-    el.textContent = from.toFixed(dec);
     requestAnimationFrame(step);
   };
   var counters = [].slice.call(document.querySelectorAll('[data-count]'));
-  counters.forEach(function (el) { el.textContent = parseFloat(el.getAttribute('data-from') || '0').toFixed((el.getAttribute('data-count').split('.')[1] || '').length); });
+  counters.forEach(function (el) {
+    el.style.setProperty('--c', getComputedStyle(el).color);
+    el.setAttribute('data-show', parseFloat(el.getAttribute('data-from') || '0').toFixed((el.getAttribute('data-count').split('.')[1] || '').length));
+    el.classList.add('counting');
+  });
   document.documentElement.classList.add('tl-anim');
   // Observe each stat block (not the inline span), so the count starts when the block is on screen
   var blocks = [];
@@ -90,5 +100,5 @@
   }, { threshold: 0, rootMargin: '0px 0px -5% 0px' });
   blocks.concat([].slice.call(document.querySelectorAll('.my-verdict, .tl-item'))).forEach(function (el) { io.observe(el); });
   // Safety net: any figure that never started counting shows its final value
-  setTimeout(function () { counters.forEach(function (el) { if (!el.__done) el.textContent = el.getAttribute('data-count'); }); }, 4000);
+  setTimeout(function () { counters.forEach(function (el) { if (!el.__done) { el.classList.remove('counting'); el.removeAttribute('data-show'); } }); }, 4000);
 })();
