@@ -51,8 +51,9 @@
   var roll = document.querySelector('.roll');
   if (roll) {
     var words = [].slice.call(roll.children), k = 0;
-    words[0].classList.add('on');
-    var nextWord = function () { words[k].classList.remove('on'); k++; words[k].classList.add('on'); if (k < words.length - 1) setTimeout(nextWord, 240); };
+    var setW = function (i) { roll.style.width = words[i].offsetWidth + 'px'; };
+    words[0].classList.add('on'); setW(0);
+    var nextWord = function () { words[k].classList.remove('on'); k++; words[k].classList.add('on'); setW(k); if (k < words.length - 1) setTimeout(nextWord, 240); };
     setTimeout(nextWord, 900);
   }
 
