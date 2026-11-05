@@ -47,12 +47,22 @@
   var mark = document.querySelector('.mark');
   if (mark) setTimeout(function () { mark.classList.add('on'); }, 350);
 
+  // 1b. Hero word roll: product, operational, marketing, privacy, compliance, customer
+  var roll = document.querySelector('.roll');
+  if (roll) {
+    var words = [].slice.call(roll.children), k = 0;
+    words[0].classList.add('on');
+    var nextWord = function () { words[k].classList.remove('on'); k++; words[k].classList.add('on'); if (k < words.length - 1) setTimeout(nextWord, 240); };
+    setTimeout(nextWord, 900);
+  }
+
   // 2. Numbers count up once, 3. verdict reveal, timeline fade-in
   var countUp = function (el) {
     var to = parseFloat(el.getAttribute('data-count'));
     var from = parseFloat(el.getAttribute('data-from') || '0');
     var dec = (el.getAttribute('data-count').split('.')[1] || '').length;
     var t0 = null, d = 900;
+    el.__done = true;
     var step = function (t) {
       if (!t0) t0 = t;
       var p = Math.min((t - t0) / d, 1), e = 1 - Math.pow(1 - p, 3);
@@ -65,13 +75,19 @@
   var counters = [].slice.call(document.querySelectorAll('[data-count]'));
   counters.forEach(function (el) { el.textContent = parseFloat(el.getAttribute('data-from') || '0').toFixed((el.getAttribute('data-count').split('.')[1] || '').length); });
   document.documentElement.classList.add('tl-anim');
+  // Observe each stat block (not the inline span), so the count starts when the block is on screen
+  var blocks = [];
+  counters.forEach(function (el) { var b = el.closest('.proof > div, .results > div') || el.parentElement; if (blocks.indexOf(b) < 0) blocks.push(b); });
   var io = new IntersectionObserver(function (es) {
     es.forEach(function (e) {
       if (!e.isIntersecting) return;
       var el = e.target;
-      if (el.hasAttribute('data-count')) countUp(el); else el.classList.add('in');
+      if (el.classList.contains('my-verdict') || el.classList.contains('tl-item')) el.classList.add('in');
+      else [].slice.call(el.querySelectorAll('[data-count]')).forEach(countUp);
       io.unobserve(el);
     });
-  }, { threshold: 0.3 });
-  counters.concat([].slice.call(document.querySelectorAll('.my-verdict, .tl-item'))).forEach(function (el) { io.observe(el); });
+  }, { threshold: 0, rootMargin: '0px 0px -5% 0px' });
+  blocks.concat([].slice.call(document.querySelectorAll('.my-verdict, .tl-item'))).forEach(function (el) { io.observe(el); });
+  // Safety net: any figure that never started counting shows its final value
+  setTimeout(function () { counters.forEach(function (el) { if (!el.__done) el.textContent = el.getAttribute('data-count'); }); }, 4000);
 })();

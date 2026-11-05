@@ -130,7 +130,7 @@ img{max-width:100%;display:block}
 .article h2{margin:56px 0 14px;font-family:var(--display);font-weight:700;font-size:26px;letter-spacing:-.02em}
 .article h3{margin:28px 0 8px;font-family:var(--display);font-weight:700;font-size:19px}
 .article p,.article li{color:var(--body);font-size:18px}
-.article ul{padding-left:20px}
+.article ul,.article ol{padding-left:20px}
 .article li{margin:6px 0}
 .results{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px;margin:28px 0;padding:28px 0;border-top:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong)}
 .results div{display:flex;flex-direction:column;gap:4px}
@@ -165,6 +165,11 @@ img{max-width:100%;display:block}
 .motion .my-verdict>*{opacity:0;transform:translateY(6px);transition:opacity .45s ease .3s,transform .45s ease .3s}
 .motion .my-verdict.in::before{transform:scaleY(1)}
 .motion .my-verdict.in>*{opacity:1;transform:none}
+.roll{display:inline-grid}
+.roll>span{grid-area:1/1;visibility:hidden}
+.roll>span:last-child{visibility:visible}
+.motion .roll>span{visibility:hidden}
+.motion .roll>span.on{visibility:visible}
 .case-title{background-image:linear-gradient(var(--lavender),var(--lavender));background-repeat:no-repeat;background-position:0 100%;background-size:0% 1px;transition:background-size .35s ease,color .15s ease}
 .case:hover .case-title,.case:focus-visible .case-title{background-size:100% 1px}
 .case-more .arr{display:inline-block;transition:transform .25s ease}
