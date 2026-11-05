@@ -187,3 +187,6 @@ img{max-width:100%;display:block}
 .builds-cta{margin-top:40px;display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px}
 .builds-cta .body{margin:0;max-width:560px}
 .verdict-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-family:var(--mono);font-size:12px}
+.verdict-link{font-size:14px;margin-top:4px}
+.signals-archive{margin:28px 0 0;font-size:15px}
+.signals-week{margin-top:40px}
