@@ -257,7 +257,7 @@ section[id]{scroll-margin-top:96px}
 .de-soon::before{content:"";position:absolute;top:-7px;right:30px;width:12px;height:12px;background:var(--panel);border-left:1px solid var(--outline);border-top:1px solid var(--outline);transform:rotate(45deg)}
 .de-soon-tag{margin:0 0 10px;font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--lavender)}
 .de-soon-arrow{display:inline-block;animation:deNudge 1.2s ease-in-out infinite}
-.de-soon-bar{height:6px;border-radius:999px;background:var(--line);overflow:hidden;margin-bottom:14px}
+.de-soon-bar{height:3px;border-radius:999px;background:var(--line);overflow:hidden;margin-bottom:14px}
 .de-soon-bar span{display:block;height:100%;width:70%;border-radius:999px;background:linear-gradient(90deg,var(--lime) 0%,#F0FFB0 50%,var(--lime) 100%);background-size:200% 100%;animation:deShimmer 1.6s linear infinite}
 .de-soon-title{margin:0;font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:-.01em;color:var(--text)}
 .de-soon-body{margin:6px 0 0;font-size:15px;line-height:1.5;color:var(--body)}
