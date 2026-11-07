@@ -19,3 +19,20 @@
   var onMq = function () { if (mq.matches) set(false); };
   if (mq.addEventListener) mq.addEventListener('change', onMq); else if (mq.addListener) mq.addListener(onMq);
 })();
+
+/* DE placeholder: "coming soon" popover */
+(function () {
+  var t = document.querySelector('.lang-de'), p = document.getElementById('de-soon');
+  if (!t || !p) return;
+  var c = p.querySelector('.de-soon-close');
+  function set(open, back) {
+    t.setAttribute('aria-expanded', open);
+    p.hidden = !open;
+    if (open && c) c.focus({ preventScroll: true });
+    if (!open && back) t.focus({ preventScroll: true });
+  }
+  t.addEventListener('click', function (e) { e.stopPropagation(); set(p.hidden); });
+  if (c) c.addEventListener('click', function () { set(false, true); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !p.hidden) set(false, true); });
+  document.addEventListener('click', function (e) { if (!p.hidden && !e.target.closest('.lang-wrap')) set(false); });
+})();
