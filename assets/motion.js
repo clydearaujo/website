@@ -102,3 +102,13 @@
   // Safety net: any figure that never started counting shows its final value
   setTimeout(function () { counters.forEach(function (el) { if (!el.__done) { el.classList.remove('counting'); el.removeAttribute('data-show'); } }); }, 4000);
 })();
+
+/* Copy email address */
+document.querySelectorAll('[data-copy]').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.getAttribute('data-copy'),s=b.parentNode.querySelector('.copy-status');
+    function done(){b.textContent='Copied';if(s)s.textContent='Email address copied';setTimeout(function(){b.textContent='Copy';if(s)s.textContent='';},2500);}
+    if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(done,function(){fallback();});}else{fallback();}
+    function fallback(){var r=document.createRange(),el=document.getElementById('contact-email');if(!el)return;r.selectNodeContents(el);var sel=getSelection();sel.removeAllRanges();sel.addRange(r);try{document.execCommand('copy');done();}catch(e){}}
+  });
+});
