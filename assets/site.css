@@ -279,3 +279,5 @@ section[id]{scroll-margin-top:96px}
 .hdr-right .btn-sm{white-space:nowrap}
 @media (max-width:600px){.site-header .wrap.hdr{padding-left:16px;padding-right:16px}.hdr-right .btn-sm{padding:0 16px}}
 @media (max-width:400px){.hdr-right .btn-sm{padding:0 13px;font-size:14px}}
+.lang-switch a:hover{color:var(--text)}
+.article h1,.h1,.h2{overflow-wrap:break-word;-webkit-hyphens:auto;hyphens:auto}

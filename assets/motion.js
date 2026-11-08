@@ -107,7 +107,7 @@
 document.querySelectorAll('[data-copy]').forEach(function(b){
   b.addEventListener('click',function(){
     var t=b.getAttribute('data-copy'),s=b.parentNode.querySelector('.copy-status');
-    function done(){b.textContent='Copied';if(s)s.textContent='Email address copied';setTimeout(function(){b.textContent='Copy';if(s)s.textContent='';},2500);}
+    var de=document.documentElement.lang==='de';function done(){b.textContent=de?'Kopiert':'Copied';if(s)s.textContent=de?'E-Mail-Adresse kopiert':'Email address copied';setTimeout(function(){b.textContent=de?'Kopieren':'Copy';if(s)s.textContent='';},2500);}
     if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(done,function(){fallback();});}else{fallback();}
     function fallback(){var r=document.createRange(),el=document.getElementById('contact-email');if(!el)return;r.selectNodeContents(el);var sel=getSelection();sel.removeAllRanges();sel.addRange(r);try{document.execCommand('copy');done();}catch(e){}}
   });

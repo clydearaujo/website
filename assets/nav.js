@@ -3,7 +3,8 @@
   if (!b || !m) return;
   function set(open, focus) {
     b.setAttribute('aria-expanded', open);
-    b.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    var de = document.documentElement.lang === 'de';
+    b.setAttribute('aria-label', open ? (de ? 'Menü schließen' : 'Close menu') : (de ? 'Menü öffnen' : 'Open menu'));
     m.classList.toggle('open', open);
     if (open && focus) { var a = m.querySelector('a'); if (a) a.focus({ preventScroll: true }); }
   }
@@ -36,3 +37,9 @@
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !p.hidden) set(false, true); });
   document.addEventListener('click', function (e) { if (!p.hidden && !e.target.closest('.lang-wrap')) set(false); });
 })();
+
+/* Remember a language the visitor picks, so the home page does not redirect them again */
+document.addEventListener('click', function (e) {
+  var a = e.target.closest && e.target.closest('[data-lang]');
+  if (a) { try { localStorage.setItem('lang', a.getAttribute('data-lang')); } catch (err) {} }
+});
