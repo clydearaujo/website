@@ -112,3 +112,9 @@ document.querySelectorAll('[data-copy]').forEach(function(b){
     function fallback(){var r=document.createRange(),el=document.getElementById('contact-email');if(!el)return;r.selectNodeContents(el);var sel=getSelection();sel.removeAllRanges();sel.addRange(r);try{document.execCommand('copy');done();}catch(e){}}
   });
 });
+
+/* Option 3 ticker: cycles data types in a fixed-width monospace slot, ends on the final word */
+(function(){var t=document.querySelector('.tick-slot');if(!t||!document.documentElement.classList.contains('motion'))return;
+var ws=(t.getAttribute('data-words')||'').split(' ').filter(Boolean),fin=t.getAttribute('data-final'),i=0;
+var show=function(w){t.classList.remove('fade');void t.offsetWidth;t.textContent=w;t.classList.add('fade');};
+show(ws[0]);var go=function(){i++;if(i<ws.length){show(ws[i]);setTimeout(go,520);}else{show(fin);}};setTimeout(go,900);})();
