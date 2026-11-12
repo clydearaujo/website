@@ -38,8 +38,16 @@
   document.addEventListener('click', function (e) { if (!p.hidden && !e.target.closest('.lang-wrap')) set(false); });
 })();
 
-/* Remember a language the visitor picks, so the home page does not redirect them again */
+/* Language switch: remember the choice, and on the home page keep the visitor on the same section */
 document.addEventListener('click', function (e) {
   var a = e.target.closest && e.target.closest('[data-lang]');
-  if (a) { try { localStorage.setItem('lang', a.getAttribute('data-lang')); } catch (err) {} }
+  if (!a) return;
+  try { localStorage.setItem('lang', a.getAttribute('data-lang')); } catch (err) {}
+  var path = location.pathname;
+  if (path !== '/' && path !== '/index.html' && path !== '/de/' && path !== '/de/index.html') return;
+  var base = a.getAttribute('data-base') || a.getAttribute('href').split('#')[0];
+  a.setAttribute('data-base', base);
+  var id = '', secs = document.querySelectorAll('section[id]'), line = window.innerHeight * 0.35;
+  for (var i = 0; i < secs.length; i++) { if (secs[i].getBoundingClientRect().top <= line) id = secs[i].id; }
+  a.setAttribute('href', base + (id ? '#' + id : ''));
 });
