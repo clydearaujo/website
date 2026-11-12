@@ -47,7 +47,22 @@ document.addEventListener('click', function (e) {
   if (path !== '/' && path !== '/index.html' && path !== '/de/' && path !== '/de/index.html') return;
   var base = a.getAttribute('data-base') || a.getAttribute('href').split('#')[0];
   a.setAttribute('data-base', base);
-  var id = '', secs = document.querySelectorAll('section[id]'), line = window.innerHeight * 0.35;
-  for (var i = 0; i < secs.length; i++) { if (secs[i].getBoundingClientRect().top <= line) id = secs[i].id; }
+  var id = '', h = location.hash.slice(1), el = h && document.getElementById(h), vh = window.innerHeight;
+  if (el && el.matches('section[id]')) { var r = el.getBoundingClientRect(); if (r.bottom > 0 && r.top < vh) id = h; }
+  if (!id) {
+    var secs = document.querySelectorAll('section[id]'), line = vh * 0.35;
+    for (var i = 0; i < secs.length; i++) { if (secs[i].getBoundingClientRect().top <= line) id = secs[i].id; }
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4 && secs.length) id = secs[secs.length - 1].id;
+  }
   a.setAttribute('href', base + (id ? '#' + id : ''));
+  try { if (id) sessionStorage.setItem('langjump', id); } catch (err) {}
 });
+
+/* After a language switch, re-align to the section once fonts and images have settled */
+(function () {
+  var id; try { id = sessionStorage.getItem('langjump'); sessionStorage.removeItem('langjump'); } catch (err) { return; }
+  if (!id || location.hash.slice(1) !== id) return;
+  var go = function () { var el = document.getElementById(id); if (el) el.scrollIntoView({ block: 'start' }); };
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(go);
+  window.addEventListener('load', go);
+})();
