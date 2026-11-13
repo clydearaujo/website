@@ -66,3 +66,25 @@ document.addEventListener('click', function (e) {
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(go);
   window.addEventListener('load', go);
 })();
+
+/* About tabs (no JS: both panels show, tabs stay hidden) */
+(function () {
+  var tabs = [].slice.call(document.querySelectorAll('.ab-tabs [role="tab"]'));
+  if (!tabs.length) return;
+  var show = function (t, focus) {
+    tabs.forEach(function (b) {
+      var on = b === t;
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+      b.tabIndex = on ? 0 : -1;
+      var p = document.getElementById(b.getAttribute('aria-controls'));
+      if (p) p.classList.toggle('on', on);
+    });
+    if (focus) t.focus();
+  };
+  tabs.forEach(function (b, i) {
+    b.addEventListener('click', function () { show(b); });
+    b.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); show(tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length], true); }
+    });
+  });
+})();
