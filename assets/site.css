@@ -351,7 +351,7 @@ section[id]{scroll-margin-top:96px}
  opacity:0;transition:opacity .25s ease,background-position .9s cubic-bezier(.2,.7,.2,1)}
 .card:hover::after,.card:focus-within::after,.ab-card:hover::after,.ab-card:focus-within::after{opacity:1;background-position:0% 50%}
 .ab-photo-wrap .ab-photo{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
-.ab-photo-wrap:hover .ab-photo{transform:scale(1.05)}
+.ab-photo-wrap:hover .ab-photo{transform:scale(1.08)}
 }
 @media (prefers-reduced-motion:reduce){.card::after,.ab-card::after,.ab-photo-wrap .ab-photo{transition:none}}
 @media (max-width:760px){.ab-photo-wrap{width:150px;height:188px}}
