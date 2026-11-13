@@ -355,3 +355,7 @@ section[id]{scroll-margin-top:96px}
 }
 @media (prefers-reduced-motion:reduce){.card::after,.ab-card::after,.ab-photo-wrap .ab-photo{transition:none}}
 @media (max-width:760px){.ab-photo-wrap{width:150px;height:188px}}
+
+/* About milestones use the Career timeline */
+.ab-timeline .tl-item:last-child{padding-bottom:0}
+.ab-timeline .tl-role a{color:inherit}
