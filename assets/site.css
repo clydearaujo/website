@@ -290,3 +290,10 @@ section[id]{scroll-margin-top:96px}
 .tick-slot{display:inline-block;text-align:right;color:var(--lime)}
 .tick-slot.fade{animation:tickIn .24s ease}
 @keyframes tickIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* Header avatar (animated; still frame when motion is reduced; photo only on narrow phones) */
+.brand{display:inline-flex;align-items:center;gap:10px}
+.brand picture{flex:0 0 auto;display:block}
+.brand-av{flex:0 0 auto;width:36px;height:36px;border-radius:50%;object-fit:cover;display:block;box-shadow:0 0 0 1px var(--line)}
+@media (max-width:600px){.brand{gap:8px}.brand-av{width:32px;height:32px}}
+@media (max-width:420px){.brand span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.brand-av{width:38px;height:38px}}
