@@ -280,7 +280,8 @@ section[id]{scroll-margin-top:96px}
 @media (max-width:600px){.site-header .wrap.hdr{padding-left:16px;padding-right:16px}.hdr-right .btn-sm{padding:0 16px}}
 @media (max-width:400px){.hdr-right .btn-sm{padding:0 13px;font-size:14px}}
 .lang-switch a:hover{color:var(--text)}
-.article h1,.h1,.h2{overflow-wrap:break-word;-webkit-hyphens:auto;hyphens:auto}
+.article h1,.h1,.h2{overflow-wrap:break-word}
+@media (max-width:600px){.article h1,.h1,.h2{-webkit-hyphens:auto;hyphens:auto}}
 /* CLS fix: counters grow from a fixed left edge */
 [data-count].counting::after{left:0;right:auto}
 .num{font-variant-numeric:tabular-nums}
