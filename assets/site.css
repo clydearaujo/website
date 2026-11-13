@@ -338,3 +338,20 @@ section[id]{scroll-margin-top:96px}
 .ab-card-t a{color:inherit}
 .ab-card-d{color:var(--body);font-size:15px;line-height:1.45}
 @media (max-width:760px){.ab-intro{grid-template-columns:1fr;gap:20px;margin-bottom:36px}.ab-photo{width:150px;height:188px}.js .ab-tabs{display:flex}.ab-tabs button{flex:1;padding:12px 8px;font-size:14px;line-height:1.25}.ab-panel{padding:24px 18px}.ab-no{display:none}.ab-ms-t{font-size:20px}.ab-cards{grid-template-columns:1fr}}
+
+/* Chrome edge on card hover and portrait zoom (desktop pointer only) */
+.card,.ab-card{position:relative}
+.ab-photo-wrap{width:200px;height:250px;border-radius:16px;overflow:hidden}
+.ab-photo-wrap .ab-photo{width:100%;height:100%}
+@media (hover:hover) and (pointer:fine){
+.card::after,.ab-card::after{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;pointer-events:none;
+ background:linear-gradient(115deg,#5b5f6e 0%,#f6f8ff 16%,#8c91a2 30%,#ffffff 44%,#6c7080 58%,#e3e7f1 74%,#979db0 88%,#f2f4fb 100%);
+ background-size:260% 260%;background-position:100% 50%;
+ -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);
+ opacity:0;transition:opacity .25s ease,background-position .9s cubic-bezier(.2,.7,.2,1)}
+.card:hover::after,.card:focus-within::after,.ab-card:hover::after,.ab-card:focus-within::after{opacity:1;background-position:0% 50%}
+.ab-photo-wrap .ab-photo{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.ab-photo-wrap:hover .ab-photo{transform:scale(1.05)}
+}
+@media (prefers-reduced-motion:reduce){.card::after,.ab-card::after,.ab-photo-wrap .ab-photo{transition:none}}
+@media (max-width:760px){.ab-photo-wrap{width:150px;height:188px}}
