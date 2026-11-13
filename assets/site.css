@@ -298,3 +298,5 @@ section[id]{scroll-margin-top:96px}
 .brand-av{flex:0 0 auto;width:36px;height:36px;border-radius:50%;object-fit:cover;display:block;box-shadow:0 0 0 1px var(--line)}
 @media (max-width:600px){.brand{gap:8px}.brand-av{width:32px;height:32px}}
 @media (max-width:420px){.brand span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.brand-av{width:38px;height:38px}}
+/* Builds headline on one line on desktop */
+@media (min-width:961px){#builds .section-head{max-width:none}}
