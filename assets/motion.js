@@ -69,7 +69,7 @@
     var to = parseFloat(el.getAttribute('data-count'));
     var from = parseFloat(el.getAttribute('data-from') || '0');
     var dec = (el.getAttribute('data-count').split('.')[1] || '').length;
-    var t0 = null, d = 1800;
+    var t0 = null, d = 1500;
     el.__done = true;
     var step = function (t) {
       if (!t0) t0 = t;
