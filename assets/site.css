@@ -283,6 +283,7 @@ section[id]{scroll-margin-top:96px}
 .lang-switch a:hover{color:var(--text)}
 .article h1,.h1,.h2{overflow-wrap:break-word}
 @media (max-width:600px){.article h1,.h1,.h2{-webkit-hyphens:auto;hyphens:auto}}
+.hero .h1{-webkit-hyphens:manual;hyphens:manual;overflow-wrap:break-word}
 /* CLS fix: counters grow from a fixed left edge */
 [data-count].counting::after{left:0;right:auto}
 .num{font-variant-numeric:tabular-nums}
