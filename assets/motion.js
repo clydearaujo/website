@@ -136,11 +136,15 @@ show(ws[0]);var go=function(){i++;if(i<ws.length){show(ws[i]);setTimeout(go,520)
   var ctl = document.querySelector('#career .timeline');
   if (ctl && !reduce) {
     var tick = false;
+    var dots = [].slice.call(ctl.querySelectorAll('.tl-item'));
     var fill = function () {
       tick = false;
       var r = ctl.getBoundingClientRect();
       var p = (window.innerHeight * 0.6 - r.top) / Math.max(1, r.height - 16);
-      ctl.style.setProperty('--tl', Math.max(0, Math.min(1, p)).toFixed(3));
+      p = Math.max(0, Math.min(1, p));
+      ctl.style.setProperty('--tl', p.toFixed(3));
+      var reach = 8 + p * (r.height - 16);
+      for (var i = 0; i < dots.length; i++) dots[i].classList.toggle('lit', dots[i].offsetTop + 13 <= reach);
     };
     window.addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(fill); } }, { passive: true });
     fill();

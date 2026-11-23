@@ -382,3 +382,5 @@ section[id]{scroll-margin-top:96px}
 #career,#builds{background-image:radial-gradient(rgba(180,155,255,.13) 1px,transparent 1.4px);background-size:26px 26px;background-color:#110D20}
 #about,#verdict{background:linear-gradient(180deg,rgba(91,46,229,.10),transparent 420px)}
 #career .timeline::after{content:"";position:absolute;left:5px;top:8px;bottom:8px;width:2px;background:var(--lime);transform-origin:0 0;transform:scaleY(var(--tl,0))}
+#career .tl-item::before{transition:background-color .3s ease,border-color .3s ease}
+#career .tl-item.lit::before{background:var(--lime);border-color:var(--lime)}
