@@ -118,3 +118,31 @@ document.querySelectorAll('[data-copy]').forEach(function(b){
 var ws=(t.getAttribute('data-words')||'').split(' ').filter(Boolean),fin=t.getAttribute('data-final'),i=0;
 var show=function(w){t.classList.remove('fade');void t.offsetWidth;t.textContent=w;t.classList.add('fade');};
 show(ws[0]);var go=function(){i++;if(i<ws.length){show(ws[i]);setTimeout(go,520);}else{show(fin);}};setTimeout(go,900);})();
+
+/* Case charts and career timeline fill */
+(function () {
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hasIO = 'IntersectionObserver' in window;
+  // 8. Case charts draw once when they scroll into view
+  var viz = [].slice.call(document.querySelectorAll('.viz'));
+  if (viz.length && hasIO && !reduce) {
+    var vio = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); vio.unobserve(e.target); } });
+    }, { threshold: 0.6 });
+    viz.forEach(function (v) { v.classList.add('viz-anim'); vio.observe(v); });
+  }
+
+  // 9. Career timeline line fills as the reader scrolls through it
+  var ctl = document.querySelector('#career .timeline');
+  if (ctl && !reduce) {
+    var tick = false;
+    var fill = function () {
+      tick = false;
+      var r = ctl.getBoundingClientRect();
+      var p = (window.innerHeight * 0.6 - r.top) / Math.max(1, r.height - 16);
+      ctl.style.setProperty('--tl', Math.max(0, Math.min(1, p)).toFixed(3));
+    };
+    window.addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(fill); } }, { passive: true });
+    fill();
+  }
+})();

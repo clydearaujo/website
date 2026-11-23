@@ -360,3 +360,25 @@ section[id]{scroll-margin-top:96px}
 /* About milestones use the Career timeline */
 .ab-timeline .tl-item:last-child{padding-bottom:0}
 .ab-timeline .tl-role a{color:inherit}
+
+/* Case charts */
+.viz{margin-top:18px;max-width:340px}
+.viz svg{display:block;width:100%;height:auto;overflow:visible}
+.viz text{font-family:var(--mono);fill:var(--muted);font-size:12px}
+.viz .big{font-family:var(--display);font-weight:700;font-size:20px;fill:var(--text)}
+.viz .lime{fill:var(--lime)}
+.viz .bar{transform-box:fill-box;transform-origin:50% 100%}
+.viz .hb{transform-box:fill-box;transform-origin:0 50%;transform:scaleX(.35)}
+.viz-anim .ln{stroke-dasharray:420;stroke-dashoffset:420}
+.viz-anim.in .ln{stroke-dashoffset:0;transition:stroke-dashoffset 1.6s cubic-bezier(.3,.7,.2,1)}
+.viz-anim .dot,.viz-anim .lab{opacity:0}
+.viz-anim.in .dot,.viz-anim.in .lab{opacity:1;transition:opacity .4s ease 1.4s}
+.viz-anim .bar{transform:scaleY(0)}
+.viz-anim.in .bar{transform:scaleY(1);transition:transform 1s cubic-bezier(.3,.7,.2,1)}
+.viz-anim.in .bar.b2{transition-delay:.25s}.viz-anim.in .bar.b3{transition-delay:.5s}.viz-anim.in .bar.b4{transition-delay:.75s}
+.viz-anim .hb{transform:scaleX(1)}
+.viz-anim.in .hb{transform:scaleX(.35);transition:transform 1.4s cubic-bezier(.3,.7,.2,1) .3s}
+/* Section rhythm */
+#career,#builds{background-image:radial-gradient(rgba(180,155,255,.13) 1px,transparent 1.4px);background-size:26px 26px;background-color:#110D20}
+#about,#verdict{background:linear-gradient(180deg,rgba(91,46,229,.10),transparent 420px)}
+#career .timeline::after{content:"";position:absolute;left:5px;top:8px;bottom:8px;width:2px;background:var(--lime);transform-origin:0 0;transform:scaleY(var(--tl,0))}
