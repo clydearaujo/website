@@ -285,7 +285,7 @@ section[id]{scroll-margin-top:96px}
 .article h1,.h1,.h2{overflow-wrap:break-word}
 @media (max-width:600px){.article h1,.h1,.h2{-webkit-hyphens:auto;hyphens:auto}}
 .hero .h1{-webkit-hyphens:manual;hyphens:manual;overflow-wrap:break-word}
-.hero .h1-long{max-width:1152px;font-size:clamp(32px,3.6vw,50px);line-height:1.16;text-wrap:balance}
+.hero .h1-long{max-width:1152px;font-size:clamp(32px,4.5vw,56px);line-height:1.16;letter-spacing:-.025em;text-wrap:balance}
 /* CLS fix: counters grow from a fixed left edge */
 [data-count].counting::after{left:0;right:auto}
 .num{font-variant-numeric:tabular-nums}
