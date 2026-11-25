@@ -403,7 +403,7 @@ section[id]{scroll-margin-top:96px}
 .vo-name{font-family:var(--display);font-weight:700;font-size:19px;line-height:1.2;color:var(--text)}
 .vo-title{font-size:14px;line-height:1.45;color:var(--muted)}
 .vo-rel{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--lavender)}
-.vo-q{margin:0;flex:1;font-size:18px;line-height:1.5;color:var(--text)}
+.vo-q{margin:0;flex:1;font-size:17px;line-height:1.5;color:var(--text)}
 .vo-link{align-self:flex-start;display:inline-flex;align-items:center;min-height:44px;font-size:14px}
 @media (max-width:760px){.vo-card{flex-basis:100%;padding:22px}.vo-q{font-size:17px}}
 @media (prefers-reduced-motion:reduce){.vo-track{scroll-behavior:auto}}
