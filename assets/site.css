@@ -387,3 +387,23 @@ section[id]{scroll-margin-top:96px}
 #career .tl-item.lit::before{background:var(--lime);border-color:var(--lime)}
 .ab-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
 .ab-tags span{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.02em;padding:5px 12px;border-radius:999px;border:1px solid var(--outline);color:var(--lavender);white-space:nowrap}
+
+.voices{padding-top:56px;padding-bottom:56px}
+.vo-head{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:20px;min-height:48px}
+.vo-head h2{font-weight:400}
+.vo-nav{display:none;gap:10px}.js .vo-nav{display:flex}
+.vo-btn{width:48px;height:48px;border-radius:999px;border:1px solid var(--outline);background:transparent;color:var(--text);font:inherit;font-size:18px;line-height:1;cursor:pointer;transition:border-color .15s ease}
+.vo-btn:hover{border-color:var(--lavender)}.vo-btn:disabled{opacity:.35;cursor:default;border-color:var(--outline)}
+.vo-track{list-style:none;margin:0;padding:0;display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none}
+.vo-track::-webkit-scrollbar{display:none}
+.vo-card{flex:0 0 calc(50% - 12px);box-sizing:border-box;scroll-snap-align:start;display:flex;flex-direction:column;gap:18px;padding:28px;background:var(--panel);border:1px solid var(--line);border-radius:16px}
+.vo-top{display:flex;align-items:center;gap:18px}
+.vo-photo{width:90px;height:90px;flex:none;border-radius:50%;object-fit:cover;border:1px solid var(--line-strong)}
+.vo-who{display:flex;flex-direction:column;gap:4px;min-width:0}
+.vo-name{font-family:var(--display);font-weight:700;font-size:19px;line-height:1.2;color:var(--text)}
+.vo-title{font-size:14px;line-height:1.45;color:var(--muted)}
+.vo-rel{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--lavender)}
+.vo-q{margin:0;flex:1;font-size:18px;line-height:1.5;color:var(--text)}
+.vo-link{align-self:flex-start;display:inline-flex;align-items:center;min-height:44px;font-size:14px}
+@media (max-width:760px){.vo-card{flex-basis:100%;padding:22px}.vo-q{font-size:17px}}
+@media (prefers-reduced-motion:reduce){.vo-track{scroll-behavior:auto}}

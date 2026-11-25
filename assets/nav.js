@@ -88,3 +88,17 @@ document.addEventListener('click', function (e) {
     });
   });
 })();
+
+/* In their words: arrow buttons for the quote gallery */
+(function () {
+  var t = document.querySelector('.vo-track'), b = document.querySelectorAll('.vo-btn');
+  if (!t || b.length < 2) return;
+  function step() { var c = t.querySelector('.vo-card'); return c ? c.getBoundingClientRect().width + 24 : 0; }
+  function upd() { b[0].disabled = t.scrollLeft < 4; b[1].disabled = t.scrollLeft + t.clientWidth > t.scrollWidth - 4; }
+  for (var i = 0; i < b.length; i++) (function (x) {
+    x.addEventListener('click', function () { t.scrollBy({ left: step() * Number(x.getAttribute('data-vo')) }); });
+  })(b[i]);
+  t.addEventListener('scroll', upd, { passive: true });
+  window.addEventListener('resize', upd);
+  upd();
+})();
