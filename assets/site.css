@@ -74,6 +74,7 @@ img{max-width:100%;display:block}
 /* Case list */
 .case{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:16px 48px;padding:36px 0;border-top:1px solid var(--line);text-decoration:none;color:var(--text)}
 .case:last-child{border-bottom:1px solid var(--line)}
+#work .case:first-child{border-top:0;padding-top:0}
 .case:hover .case-title{color:var(--link-hover)}
 .case-meta{font-family:var(--mono);font-size:12px;color:var(--muted)}
 .case-title{font-family:var(--display);font-weight:700;font-size:30px;line-height:1.15;letter-spacing:-.02em;transition:color .15s ease}
