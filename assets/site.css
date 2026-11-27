@@ -415,3 +415,10 @@ section[id]{scroll-margin-top:96px}
 .hero-video{display:block;width:100%;height:100%;object-fit:cover}
 .hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,11,26,.86) 0%,rgba(14,11,26,.66) 55%,rgba(14,11,26,.42) 100%),linear-gradient(0deg,rgba(14,11,26,.9) 0%,rgba(14,11,26,0) 22%)}
 @media (max-width:760px){.hero-media::after{background:linear-gradient(0deg,rgba(14,11,26,.92) 0%,rgba(14,11,26,.74) 30%,rgba(14,11,26,.74) 100%)}}
+/* Signals / Puls heading: pulse video behind the heading band, loaded by motion.js when the section nears the viewport */
+#verdict{position:relative}
+#verdict>.wrap{position:relative;z-index:1}
+.verdict-media{position:absolute;left:0;right:0;top:0;height:330px;z-index:0;overflow:hidden;isolation:isolate;background:var(--panel);-webkit-mask-image:linear-gradient(#000 62%,transparent);mask-image:linear-gradient(#000 62%,transparent)}
+.verdict-video{display:block;width:100%;height:100%;object-fit:cover;mix-blend-mode:screen}
+.verdict-media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(21,17,42,.55) 0%,rgba(21,17,42,.25) 60%,rgba(21,17,42,.1) 100%)}
+@media (max-width:760px){.verdict-media{height:460px}.verdict-video{object-position:86% 50%}.verdict-media::after{background:rgba(21,17,42,.45)}}

@@ -166,4 +166,23 @@ show(ws[0]);var go=function(){i++;if(i<ws.length){show(ws[i]);setTimeout(go,520)
     if (document.readyState === 'complete') setTimeout(startHero, 0);
     else window.addEventListener('load', function () { setTimeout(startHero, 0); });
   }
+  // 11. Signals / Puls heading video - nothing is fetched until the section nears the viewport;
+  // reduced motion and data saver get the still only
+  var vv = document.querySelector('.verdict-video');
+  if (vv && hasIO) {
+    var vvIO = new IntersectionObserver(function (es) {
+      if (!es[0].isIntersecting) return;
+      vvIO.disconnect();
+      vv.poster = vv.getAttribute('data-poster');
+      if (reduce || (conn && conn.saveData)) return;
+      var av1 = vv.canPlayType('video/mp4; codecs="av01.0.05M.08"') === 'probably';
+      var play = function () { var p = vv.play(); if (p && p.catch) p.catch(function () {}); };
+      if (av1) vv.addEventListener('error', function () { vv.src = vv.getAttribute('data-h264'); play(); }, { once: true });
+      vv.muted = true;
+      vv.src = vv.getAttribute(av1 ? 'data-av1' : 'data-h264');
+      play();
+      new IntersectionObserver(function (e2) { if (e2[0].isIntersecting) play(); else vv.pause(); }).observe(vv);
+    }, { rootMargin: '600px 0px' });
+    vvIO.observe(vv);
+  }
 })();
