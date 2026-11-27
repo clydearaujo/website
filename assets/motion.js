@@ -149,4 +149,21 @@ show(ws[0]);var go=function(){i++;if(i<ws.length){show(ws[i]);setTimeout(go,520)
     window.addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(fill); } }, { passive: true });
     fill();
   }
+  // 10. Hero background video - the still (poster) paints first; the video is fetched only after
+  // the page has loaded, and not at all for reduced motion or data saver
+  var hv = document.querySelector('.hero-video');
+  var conn = navigator.connection;
+  if (hv && !reduce && !(conn && conn.saveData)) {
+    var startHero = function () {
+      var av1 = hv.canPlayType('video/mp4; codecs="av01.0.05M.08"') === 'probably';
+      var play = function () { var p = hv.play(); if (p && p.catch) p.catch(function () {}); };
+      if (av1) hv.addEventListener('error', function () { hv.src = hv.getAttribute('data-h264'); play(); }, { once: true });
+      hv.muted = true;
+      hv.src = hv.getAttribute(av1 ? 'data-av1' : 'data-h264');
+      play();
+      if (hasIO) new IntersectionObserver(function (es) { if (es[0].isIntersecting) play(); else hv.pause(); }).observe(hv);
+    };
+    if (document.readyState === 'complete') setTimeout(startHero, 0);
+    else window.addEventListener('load', function () { setTimeout(startHero, 0); });
+  }
 })();
