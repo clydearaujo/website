@@ -422,3 +422,12 @@ section[id]{scroll-margin-top:96px}
 .verdict-video{display:block;width:100%;height:100%;object-fit:cover;mix-blend-mode:screen}
 .verdict-media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(21,17,42,.55) 0%,rgba(21,17,42,.25) 60%,rgba(21,17,42,.1) 100%)}
 @media (max-width:760px){.verdict-media{height:460px}.verdict-video{object-position:86% 50%}.verdict-media::after{background:rgba(21,17,42,.45)}}
+/* Hero proof numbers above the headline sentence */
+.hero-nums{display:flex;flex-wrap:wrap;margin:0;padding:0;list-style:none}
+.hero-nums li{display:flex;flex-direction:column;gap:6px;padding:0 36px;border-left:1px solid rgba(255,255,255,.22)}
+.hero-nums li:first-child{padding-left:0;border-left:0}
+.hero-nums b{font-family:var(--display);font-weight:700;font-size:clamp(34px,5.6vw,76px);line-height:1;letter-spacing:-.03em;color:#fff;white-space:nowrap}
+.hero-nums span{font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--lavender)}
+.hero .h1-long.h1-sub{max-width:900px;font-size:clamp(24px,3vw,38px);line-height:1.22}
+@media (max-width:760px){.hero-nums{display:grid;grid-template-columns:1fr 1fr;gap:22px 0}.hero-nums li{padding:0 0 0 18px}.hero-nums li:nth-child(odd){padding-left:0;border-left:0}}
+@media (max-width:380px){.hero-nums span{font-size:11.5px;letter-spacing:.08em}.hero-nums li{padding-left:14px}}
