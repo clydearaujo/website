@@ -149,22 +149,38 @@ show(ws[0]);var go=function(){i++;if(i<ws.length){show(ws[i]);setTimeout(go,520)
     window.addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(fill); } }, { passive: true });
     fill();
   }
-  // 10. Hero background video - the still (poster) paints first; the video is fetched only after
-  // the page has loaded, and not at all for reduced motion or data saver
+  // 10. Hero background video - the first screen paints exactly as it does without video (the
+  // headline stays the largest paint). The video is fetched a few seconds after load, or on the
+  // first interaction, and fades in. Reduced motion and data saver get the still only.
   var hv = document.querySelector('.hero-video');
   var conn = navigator.connection;
-  if (hv && !reduce && !(conn && conn.saveData)) {
+  if (hv) {
+    var heroStarted = false;
     var startHero = function () {
+      if (heroStarted) return; heroStarted = true;
+      if (reduce || (conn && conn.saveData)) {
+        var im = new Image();
+        im.onload = function () { hv.poster = im.src; hv.classList.add('on'); };
+        im.src = hv.getAttribute('data-poster');
+        return;
+      }
       var av1 = hv.canPlayType('video/mp4; codecs="av01.0.05M.08"') === 'probably';
       var play = function () { var p = hv.play(); if (p && p.catch) p.catch(function () {}); };
       if (av1) hv.addEventListener('error', function () { hv.src = hv.getAttribute('data-h264'); play(); }, { once: true });
+      hv.addEventListener('playing', function () { hv.classList.add('on'); }, { once: true });
       hv.muted = true;
       hv.src = hv.getAttribute(av1 ? 'data-av1' : 'data-h264');
       play();
       if (hasIO) new IntersectionObserver(function (es) { if (es[0].isIntersecting) play(); else hv.pause(); }).observe(hv);
     };
-    if (document.readyState === 'complete') setTimeout(startHero, 0);
-    else window.addEventListener('load', function () { setTimeout(startHero, 0); });
+    var armHero = function () {
+      setTimeout(startHero, 3500);
+      ['pointerdown', 'touchstart', 'keydown', 'scroll'].forEach(function (ev) {
+        window.addEventListener(ev, startHero, { once: true, passive: true });
+      });
+    };
+    if (document.readyState === 'complete') armHero();
+    else window.addEventListener('load', armHero);
   }
   // 11. Signals / Puls heading video - nothing is fetched until the section nears the viewport;
   // reduced motion and data saver get the still only
